@@ -6,19 +6,22 @@ A comprehensive guide and automation scripts for installing AMD ROCm on Zorin OS
 
 This repository provides solutions for installing AMD ROCm (Radeon Open Compute platform) on Zorin OS and other Ubuntu-based Linux distributions that are not officially supported by the ROCm installer.
 
-## Files
+## 📁 Repository Contents
 
 - [`ROCm-Zorin-OS-Installation-Guide.md`](ROCm-Zorin-OS-Installation-Guide.md) - Complete step-by-step installation guide
 - [`install-rocm-zorin.sh`](install-rocm-zorin.sh) - Automated installation script
+- [`ROCm-Libraries-Showcase.md`](ROCm-Libraries-Showcase.md) - Comprehensive ROCm libraries overview
+- [`Performance-Results.md`](Performance-Results.md) - Actual performance benchmarks
+- [`Troubleshooting-Guide.md`](Troubleshooting-Guide.md) - Common issues and solutions
 - [`README.md`](README.md) - This file
 
-## Quick Start
+## 🚀 Quick Start
 
 ### Option 1: Automated Installation (Recommended)
 
 ```bash
 # Download the installation script
-wget https://raw.githubusercontent.com/your-username/ROCm-Zorin-OS/main/install-rocm-zorin.sh
+wget https://raw.githubusercontent.com/KidIkaros/ZorinOS-ROCm/main/install-rocm-zorin.sh
 
 # Make it executable
 chmod +x install-rocm-zorin.sh
@@ -30,6 +33,58 @@ chmod +x install-rocm-zorin.sh
 ### Option 2: Manual Installation
 
 Follow the detailed steps in [ROCm-Zorin-OS-Installation-Guide.md](ROCm-Zorin-OS-Installation-Guide.md).
+
+## 📊 Performance Highlights
+
+### AMD Radeon RX 9060 XT Performance
+- **ROCBLAS**: 4,057 GFLOPS (matrix multiplication)
+- **Memory Bandwidth**: 283.7 GB/s
+- **Random Generation**: 35.8 G numbers/sec
+- **Matrix Performance**: 363.6 GFLOPS (custom kernels)
+
+See [Performance-Results.md](Performance-Results.md) for detailed benchmarks.
+
+## 📚 Library Showcase
+
+ROCm 7.2.0 includes powerful libraries for:
+
+- **ROCBLAS** - Linear algebra (4+ TFLOPS)
+- **ROCFFT** - Fast Fourier transforms
+- **ROCRAND** - Random number generation
+- **ROCSOLVER** - Dense linear solvers
+- **ROCSPARSE** - Sparse linear algebra
+- **MIVisionX** - Computer vision
+- **ROCProfiler** - Performance analysis
+
+See [ROCm-Libraries-Showcase.md](ROCm-Libraries-Showcase.md) for complete overview.
+
+## 🔧 Troubleshooting
+
+Common issues and solutions:
+
+- **"ROCk module is NOT loaded"** → Disable Secure Boot or enroll MOK keys
+- **"zorin is not a supported OS"** → Use installation script or modify OS detection
+- **HIP compilation errors** → Check environment variables and paths
+
+See [Troubleshooting-Guide.md](Troubleshooting-Guide.md) for comprehensive help.
+
+## ⚡ Quick Verification
+
+After installation, verify with:
+
+```bash
+# Check GPU detection
+rocminfo
+
+# Check compiler version  
+hipcc --version
+
+# Monitor GPU status
+rocm-smi
+
+# Test basic program
+hipcc hip_vector_add.cpp -o hip_vector_add && ./hip_vector_add
+```
 
 ## System Requirements
 
